@@ -83,41 +83,6 @@ const displayBoard = (arr) => {
     return printContainer;
 };
 
-// const playNew = (tileContainer, playerOne, playerTwo) => {
-//     let board = [];
-//     randomSelector(tileContainer, board, 1);
-//     console.log('Game starting with first tile: ', displayBoard(board));
-
-//     while (playerOne.length > 0 && playerTwo.length > 0) {
-//         let validTileForPlayerOne = findValidTile(
-//             tileContainer,
-//             board,
-//             playerOne
-//         );
-//         if (validTileForPlayerOne === undefined) {
-//             console.log('PlayerOne has no tile properly');
-//             console.log(playerOne);
-//         } else {
-//             boardHandler(
-//                 validTileForPlayerOne,
-//                 playerOne,
-//                 board,
-//                 connectedTiles,
-//                 finishControl
-//             );
-
-//             console.log(
-//                 `PlayerOne plays ${displayBoard([
-//                     connectedTiles[0],
-//                 ])} to connect to tile ${displayBoard([
-//                     connectedTiles[1],
-//                 ])} on the board`
-//             );
-//             console.log('Board is now:', displayBoard(board));
-//         }
-//     }
-// };
-
 const play = (tileContainer, playerOne, playerTwo) => {
     debugger;
     let board = [];
@@ -127,11 +92,9 @@ const play = (tileContainer, playerOne, playerTwo) => {
     while (
         playerOne.length > 0 &&
         playerTwo.length > 0 &&
-        finishControl.length !== 1
+        finishControl.length !== 2
     ) {
-        console.log('Container; ', tileContainer);
-        console.log('PlayerOne', playerOne);
-        console.log('PlayerTwo', playerTwo);
+        finishControl = [];
         let validTileForPlayerOne = findValidTile(
             tileContainer,
             board,
@@ -179,8 +142,7 @@ const play = (tileContainer, playerOne, playerTwo) => {
             console.log('Board is now:', displayBoard(board));
         } else console.log('PlayerOne win...');
         if (playerTwo.length === 0) console.log('PlayerTwo win...');
-        console.log('Tile Container: ', tileContainer);
-        tileContainer.length === 0 && finishControl.length === 1
+        tileContainer.length === 0 && finishControl.length === 2
             ? playerOne.length > playerTwo.length
                 ? console.log(
                       `Tile is finished in the stock\nPlayerOne has ${playerOne.length} tiles\nPlayerTwo has ${playerTwo.length} tiles\nPlayerTwo win`
